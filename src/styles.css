@@ -60,6 +60,14 @@ main.single { display: block; }
   .stats { margin-left: 0; }
   h1 { font-size: 1.35rem; }
 }
+@media (max-width: 520px) {
+  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; gap: 6px; }
+  .stat { min-width: 0; padding: 5px 8px; }
+  .stat .note { display: none; }
+  .stat b { font-size: 1.05rem; }
+  .level { gap: 3px; }
+  .level button { width: 24px; height: 24px; }
+}
 
 /* ---- Échiquier (chessground) ---- */
 .board-col { display: grid; gap: 8px; min-width: 0; }
@@ -165,3 +173,5 @@ footer { font-size: .82rem; color: var(--muted); }
 footer a { color: inherit; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+nav.tabs button.install { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
+nav.tabs button.install:hover { color: var(--accent-ink); background: var(--accent); filter: brightness(1.08); }

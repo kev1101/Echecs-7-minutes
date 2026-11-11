@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useState, type ComponentType } from 'react';
+import { useInstall } from './ui/install';
 import { Header } from './ui/Header';
 import { useProfile } from './state/profile';
 import { daysBetween, today } from './util/dates';
@@ -51,6 +52,7 @@ export default function App() {
     else document.documentElement.setAttribute('data-theme', t);
   }, [profile.settings.theme]);
 
+  const { canInstall, install } = useInstall();
   const theme = THEMES.find((t) => t.id === id) ?? daily;
   const go = (tid: string) => {
     history.replaceState(null, '', '#' + tid);
@@ -67,6 +69,11 @@ export default function App() {
             {t.id === daily.id && <em>du jour</em>}
           </button>
         ))}
+        {canInstall && (
+          <button className="install" onClick={() => void install()} title="Ajouter l’application à l’écran d’accueil">
+            ⤓ Installer
+          </button>
+        )}
       </nav>
       <Suspense fallback={<div className="loading">Chargement…</div>}>
         <theme.Comp key={theme.id} />

@@ -12,7 +12,6 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['icons/*.png', 'icons/*.svg', 'engine/*'],
       manifest: {
         name: 'Échecs en 7 minutes',
         short_name: 'Échecs 7 min',
