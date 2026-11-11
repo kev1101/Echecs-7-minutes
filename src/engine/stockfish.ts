@@ -37,7 +37,7 @@ export function scoreToCp(s: Score): number {
 }
 
 export function parseInfo(line: string): EngineLine | null {
-  if (!line.startsWith('info ') || !line.includes(' pv ') || line.includes(' bound')) return null;
+  if (!line.startsWith('info ') || !line.includes(' pv ') || /(lower|upper)bound/.test(line)) return null;
   const tok = line.split(' ');
   const out: EngineLine = { multipv: 1, depth: 0, pv: [] };
   for (let i = 1; i < tok.length; i++) {

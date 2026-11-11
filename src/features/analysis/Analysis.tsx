@@ -7,14 +7,19 @@ import { EvalBar } from '../../ui/EvalBar';
 import { MoveList } from '../../ui/MoveList';
 
 /** Échiquier libre avec analyse Stockfish : sert aussi à relire une partie. */
-export function Analysis({ initialSans, initialFen = START_FEN, title = 'Analyse libre', orientation: o0 = 'w' }: {
+export function Analysis({ initialSans, initialFen = START_FEN, title = 'Analyse libre', orientation: o0 = 'w', startCursor, annotations, onBack }: {
   initialSans?: string[];
   initialFen?: string;
   title?: string;
   orientation?: Color;
+  startCursor?: number;
+  /** Commentaires par demi-coup (clé = nombre de demi-coups joués). */
+  annotations?: Record<number, { title: string; text: string; tone: string }>;
+  onBack?: () => void;
 }) {
   const [sans, setSans] = useState<string[]>(initialSans ?? []);
-  const [cursor, setCursor] = useState(initialSans?.length ?? 0);
+  const [cursor, setCursor] = useState(startCursor ?? initialSans?.length ?? 0);
+  const ann = annotations?.[cursor];
   const [orientation, setOrientation] = useState<Color>(o0);
   const [lines, setLines] = useState<EngineLine[]>([]);
   const [depth, setDepth] = useState(0);
@@ -82,6 +87,12 @@ export function Analysis({ initialSans, initialFen = START_FEN, title = 'Analyse
           <span className="tag">Stockfish 19 · profondeur {depth || '…'}</span>
         </div>
         <EvalBar cp={evalWhite} />
+        {ann && (
+          <div className={`msg ${ann.tone === 'info' ? '' : ann.tone}`}>
+            <b>{ann.title}</b>
+            {ann.text && <span className="idea">{ann.text}</span>}
+          </div>
+        )}
         <ol className="feed">
           {lines.map((l) => {
             const san = pvToSan(fen, l.pv).slice(0, 8);
@@ -100,7 +111,8 @@ export function Analysis({ initialSans, initialFen = START_FEN, title = 'Analyse
           <button className="btn" onClick={() => setCursor((c) => Math.min(sans.length, c + 1))} aria-label="Coup suivant">▶</button>
           <button className="btn" onClick={() => setCursor(sans.length)} aria-label="Fin">⏭</button>
           <button className="btn" onClick={() => setOrientation((o) => (o === 'w' ? 'b' : 'w'))}>Retourner</button>
-          <button className="btn" onClick={() => { setSans([]); setCursor(0); }}>Effacer</button>
+          {!onBack && <button className="btn" onClick={() => { setSans([]); setCursor(0); }}>Effacer</button>}
+          {onBack && <button className="btn primary" onClick={onBack}>Retour</button>}
         </div>
         {best && <p className="fine">Meilleur coup : <b>{fr(pvToSan(fen, best.pv)[0] ?? '')}</b></p>}
       </section>

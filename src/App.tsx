@@ -21,13 +21,14 @@ const Soon = ({ what }: { what: string }) => (
 );
 
 const Settings = lazy(() => import('./features/settings/Settings'));
+const Game = lazy(() => import('./features/game/Game'));
 
 export const THEMES: Theme[] = [
   { id: 'ouvertures', label: 'Ouvertures', daily: true, Comp: () => <Soon what="Ouvertures" /> },
   { id: 'problemes', label: 'Problèmes', daily: true, Comp: () => <Soon what="Problèmes" /> },
   { id: 'strategie', label: 'Stratégie', daily: true, Comp: () => <Soon what="Stratégie" /> },
   { id: 'finales', label: 'Finales', daily: true, Comp: () => <Soon what="Finales" /> },
-  { id: 'partie', label: 'Partie commentée', daily: true, Comp: () => <Soon what="Partie commentée" /> },
+  { id: 'partie', label: 'Partie commentée', daily: true, Comp: () => <Game /> },
   { id: 'analyse', label: 'Analyse', daily: false, Comp: () => <Analysis /> },
   { id: 'reglages', label: '⚙︎ Réglages', daily: false, Comp: () => <Settings /> }
 ];

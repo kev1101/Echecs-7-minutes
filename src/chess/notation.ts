@@ -96,7 +96,7 @@ export function formatLine(sans: string[], startFen = START_FEN, french = true):
     out.push(french ? fr(s) : s);
     ply++;
   });
-  return out.join(' ').replace(/(\d+\.) /g, '$1');
+  return out.join(' ').replace(/(\d+\.(?:\.\.)?) /g, '$1');
 }
 
 /** Découpe « 1.e4 e5 2.Nf3 » en jetons SAN. */
