@@ -1,0 +1,120 @@
+{
+ "source": "Lichess puzzle database (CC0)",
+ "generated": "2026-11-11T00:45:36.397Z",
+ "buckets": [
+  {
+   "file": "r0600.json",
+   "min": 600,
+   "max": 700,
+   "count": 1429
+  },
+  {
+   "file": "r0700.json",
+   "min": 700,
+   "max": 800,
+   "count": 1429
+  },
+  {
+   "file": "r0800.json",
+   "min": 800,
+   "max": 900,
+   "count": 1429
+  },
+  {
+   "file": "r0900.json",
+   "min": 900,
+   "max": 1000,
+   "count": 1429
+  },
+  {
+   "file": "r1000.json",
+   "min": 1000,
+   "max": 1100,
+   "count": 1429
+  },
+  {
+   "file": "r1100.json",
+   "min": 1100,
+   "max": 1200,
+   "count": 1429
+  },
+  {
+   "file": "r1200.json",
+   "min": 1200,
+   "max": 1300,
+   "count": 1429
+  },
+  {
+   "file": "r1300.json",
+   "min": 1300,
+   "max": 1400,
+   "count": 1429
+  },
+  {
+   "file": "r1400.json",
+   "min": 1400,
+   "max": 1500,
+   "count": 1429
+  },
+  {
+   "file": "r1500.json",
+   "min": 1500,
+   "max": 1600,
+   "count": 1429
+  },
+  {
+   "file": "r1600.json",
+   "min": 1600,
+   "max": 1700,
+   "count": 1429
+  },
+  {
+   "file": "r1700.json",
+   "min": 1700,
+   "max": 1800,
+   "count": 1429
+  },
+  {
+   "file": "r1800.json",
+   "min": 1800,
+   "max": 1900,
+   "count": 1429
+  },
+  {
+   "file": "r1900.json",
+   "min": 1900,
+   "max": 2000,
+   "count": 1429
+  }
+ ],
+ "themes": {
+  "advancedPawn": 3045,
+  "endgame": 11487,
+  "promotion": 1490,
+  "kingsideAttack": 2177,
+  "skewer": 838,
+  "fork": 1015,
+  "mateIn1": 829,
+  "quietMove": 979,
+  "sacrifice": 2372,
+  "hangingPiece": 924,
+  "defensiveMove": 1161,
+  "pin": 941,
+  "mateIn2": 829,
+  "backRankMate": 869,
+  "mateIn3": 827,
+  "discoveredAttack": 985,
+  "attraction": 1173,
+  "zugzwang": 862,
+  "deflection": 1163,
+  "xRayAttack": 744,
+  "smotheredMate": 181,
+  "exposedKing": 1202,
+  "trappedPiece": 664,
+  "capturingDefender": 697,
+  "clearance": 771,
+  "interference": 659,
+  "intermezzo": 861,
+  "doubleCheck": 740
+ }
+}

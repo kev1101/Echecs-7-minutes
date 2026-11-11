@@ -11,7 +11,8 @@ import type { Color } from '../chess/notation';
 
 export interface Arrow {
   from: string;
-  to: string;
+  /** Absent : cercle sur la case de départ. */
+  to?: string;
   brush?: 'green' | 'blue' | 'red' | 'yellow' | 'paleBlue' | 'paleGreen' | 'paleRed' | 'paleGrey';
 }
 
@@ -78,7 +79,7 @@ export function Board({ fen, orientation, movable, lastMove, arrows, flash, onMo
       drawable: {
         enabled: true,
         visible: true,
-        autoShapes: (arrows ?? []).map((a): DrawShape => ({ orig: a.from as Key, dest: a.to as Key, brush: a.brush ?? 'green' }))
+        autoShapes: (arrows ?? []).map((a): DrawShape => ({ orig: a.from as Key, dest: a.to ? (a.to as Key) : undefined, brush: a.brush ?? 'green' }))
       }
     };
   };
