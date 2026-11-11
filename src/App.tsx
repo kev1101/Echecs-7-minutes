@@ -22,9 +22,10 @@ const Soon = ({ what }: { what: string }) => (
 
 const Settings = lazy(() => import('./features/settings/Settings'));
 const Game = lazy(() => import('./features/game/Game'));
+const Openings = lazy(() => import('./features/openings/Openings'));
 
 export const THEMES: Theme[] = [
-  { id: 'ouvertures', label: 'Ouvertures', daily: true, Comp: () => <Soon what="Ouvertures" /> },
+  { id: 'ouvertures', label: 'Ouvertures', daily: true, Comp: () => <Openings /> },
   { id: 'problemes', label: 'Problèmes', daily: true, Comp: () => <Soon what="Problèmes" /> },
   { id: 'strategie', label: 'Stratégie', daily: true, Comp: () => <Soon what="Stratégie" /> },
   { id: 'finales', label: 'Finales', daily: true, Comp: () => <Soon what="Finales" /> },

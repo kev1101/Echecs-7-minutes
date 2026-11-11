@@ -13,6 +13,7 @@ import { update as glickoUpdate } from '../../rating/glicko2';
 import { EvalBar } from '../../ui/EvalBar';
 import { Analysis } from '../analysis/Analysis';
 import { enhanceWithClaude } from '../../llm/claude';
+import { loadEco, openingName } from '../../chess/eco';
 
 export interface Note {
   ply: number; // index du demi-coup (0 = premier coup de la partie)
@@ -101,6 +102,10 @@ function GameInner({ saved, profileLevel, offset, rep, nextColor, toggleColor, o
   const [threat, setThreat] = useState<Arrow | null>(null);
 
   const gen = useRef(0);
+  const eco = useRef<Record<string, [string, string]>>({});
+  useEffect(() => {
+    void loadEco().then((e) => (eco.current = e));
+  }, []);
   const cache = useRef(new Map<string, Promise<EngineAnalysis>>());
   const tips = useRef(new Set<string>());
   const claudeCalls = useRef(0);
@@ -324,6 +329,12 @@ function GameInner({ saved, profileLevel, offset, rep, nextColor, toggleColor, o
       parts.push(ex.text);
     } else if (isBest && a.lines[1] && classify(bestCp, scoreToCp(a.lines[1]), false).lossPct >= 15) {
       parts.push('Le seul bon coup, bien trouvé !');
+    }
+    // Coup de théorie (base ECO) sans perte notable
+    const known = eco.current[c.fen().split(' ').slice(0, 4).join(' ')];
+    if (known && cl.lossPct < 5 && ply < 30) {
+      label = 'Théorie';
+      parts.push(`Position connue : ${known[0]} · ${openingName(eco.current, next)?.name ?? known[1]}.`);
     }
     if (c.isCheckmate()) {
       label = 'Excellent';

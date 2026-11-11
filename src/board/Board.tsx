@@ -121,7 +121,8 @@ export function Board({ fen, orientation, movable, lastMove, arrows, flash, onMo
 
   useEffect(() => {
     if (!flash || !api.current) return;
-    api.current.setShapes([{ orig: flash as Key, brush: 'red' }]);
+    // flash peut porter un suffixe « #n » pour rejouer l'effet sur la même case
+    api.current.setShapes([{ orig: flash.split('#')[0] as Key, brush: 'red' }]);
     const t = setTimeout(() => api.current?.setShapes([]), 700);
     return () => clearTimeout(t);
   }, [flash]);

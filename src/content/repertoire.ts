@@ -133,7 +133,7 @@ export const REPERTOIRE: RepLine[] = [
   },
   {
     id: 'b-lon', side: 'b', group: 'Noirs · 1.d4', name: 'Contre le Londres',
-    pgn: '1.d4 d5 2.Bf4 (2.Nf3 Nf6 3.Bf4 c5 4.e3 Nc6 5.c3 Qb6) c5 3.e3 Nc6 4.Nf3 (4.c3 Qb6 5.Qb3 c4 6.Qc2 Bf5) Nf6 5.c3 Qb6 6.Qb3 c4 7.Qc2 Bf5',
+    pgn: '1.d4 d5 2.Bf4 (2.Nf3 Nf6 3.Bf4 c5 4.e3 Nc6 5.c3 Qb6) c5 3.e3 Nc6 4.Nf3 (4.c3 Qb6 5.Qb3 c4 6.Qc2 Nf6 7.Nf3 Bf5) Nf6 5.c3 Qb6 6.Qb3 c4 7.Qc2 Bf5',
     idea: '...Db6 vise b2 ; si Db3, ...c4 gagne de l’espace et chasse la dame.'
   },
   {

@@ -12,7 +12,7 @@
     "typecheck": "tsc -b",
     "data:eco": "node scripts/build-eco.mjs",
     "data:puzzles": "node scripts/build-puzzles.mjs",
-    "verify": "node scripts/verify-content.mjs",
+    "verify": "vitest run --config vitest.verify.config.ts",
     "postinstall": "node scripts/copy-engine.mjs"
   },
   "dependencies": {
