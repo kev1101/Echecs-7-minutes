@@ -11,25 +11,17 @@ interface Theme {
   Comp: ComponentType;
 }
 
-const Soon = ({ what }: { what: string }) => (
-  <main className="single">
-    <section className="panel">
-      <h2>{what}</h2>
-      <p className="sub">Ce module arrive dans une prochaine étape.</p>
-    </section>
-  </main>
-);
-
 const Settings = lazy(() => import('./features/settings/Settings'));
 const Game = lazy(() => import('./features/game/Game'));
 const Openings = lazy(() => import('./features/openings/Openings'));
 const Puzzles = lazy(() => import('./features/puzzles/Puzzles'));
 const Endgames = lazy(() => import('./features/endgames/Endgames'));
+const Strategy = lazy(() => import('./features/strategy/Strategy'));
 
 export const THEMES: Theme[] = [
   { id: 'ouvertures', label: 'Ouvertures', daily: true, Comp: () => <Openings /> },
   { id: 'problemes', label: 'Problèmes', daily: true, Comp: () => <Puzzles /> },
-  { id: 'strategie', label: 'Stratégie', daily: true, Comp: () => <Soon what="Stratégie" /> },
+  { id: 'strategie', label: 'Stratégie', daily: true, Comp: () => <Strategy /> },
   { id: 'finales', label: 'Finales', daily: true, Comp: () => <Endgames /> },
   { id: 'partie', label: 'Partie commentée', daily: true, Comp: () => <Game /> },
   { id: 'analyse', label: 'Analyse', daily: false, Comp: () => <Analysis /> },

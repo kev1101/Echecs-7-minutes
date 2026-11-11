@@ -64,6 +64,8 @@ export interface StrategyRow {
   right: number;
   lastAt: number;
   lastOk: boolean;
+  /** Boîte de Leitner (0 = à revoir vite, 4 = bien sue). */
+  box: number;
 }
 
 export interface EndgameRow {
