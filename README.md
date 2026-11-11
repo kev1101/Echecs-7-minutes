@@ -1,5 +1,7 @@
 # Échecs en 7 minutes
 
+**Application en ligne : https://kev1101.github.io/Echecs-7-minutes/**
+
 Une séance d’échecs quotidienne de 7 minutes, en français, qui fonctionne hors ligne et s’installe comme une application (PWA) sur le téléphone et sur l’ordinateur.
 
 - **Ouvertures** : votre répertoire (1.e4 ; Caro-Kann et Slave avec les noirs) révisé par répétition espacée (FSRS), import PGN, noms ECO.
